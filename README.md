@@ -2,6 +2,8 @@
 
 A minimal, optimized Docker image for running x86 and x86_64 programs on ARM64 systems using [FEX-Emu](https://fex-emu.com/).
 
+Get it from DockerHub: https://hub.docker.com/r/stevenlafl/fex
+
 ## What is FEX?
 
 FEX allows you to run x86 applications on ARM64 Linux devices, similar to qemu-user and box64. It offers broad compatibility with both 32-bit and 64-bit x86 binaries, and it can be used alongside Wine/Proton to play Windows games.
