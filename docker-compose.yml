@@ -1,0 +1,14 @@
+services:
+  fex:
+    image: stevenlafl/fex:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/arm64
+    container_name: fex-emulator
+    volumes:
+      - ./workspace:/home/fex/workspace
+    stdin_open: true
+    tty: true
+    privileged: true
+    restart: unless-stopped
