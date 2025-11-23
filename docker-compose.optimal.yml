@@ -12,8 +12,8 @@ services:
       # ----------------
       - FEX_MULTIBLOCK=true                 # Controls multiblock code compilation; may cause long JIT compilation times and stutter
       - FEX_MAXINST=5000                    # Maximum number of instructions to store in a block
-      - FEX_ENABLECODECACHINGWIP=false      # Enable the code caching subsystem
-      - FEX_HOSTFEATURES=off                # Controls CPU features in the JIT (enable/disable feature flags)
+      - FEX_ENABLECODECACHINGWIP=true       # Enable the code caching subsystem
+      - FEX_HOSTFEATURES=enableatomics,enablecrypto,enablepmull128 # ARM64 v8.2 (Ampere, RK3588, etc.) features
       - FEX_SMALLTSCSCALE=true              # Scales the cycle counter on systems that have low frequencies
       - FEX_CPUFEATUREREGISTERS=            # Override CPU feature flags for manual testing
 
@@ -26,7 +26,7 @@ services:
       - FEX_THUNKCONFIG=                    # Path or named Thunk configuration JSON file
       - FEX_ENV=                            # Adds environment variables to the emulated environment
       - FEX_HOSTENV=                        # Adds environment variables to the host environment
-      - FEX_ADDITIONALARGUMENTS=            # Additional CLI arguments to the application
+#      - FEX_ADDITIONALARGUMENTS=            # Additional CLI arguments to the application
       - FEX_DISABLEL2CACHE=false            # Disable FEXCore's JIT L2 cache lookup (less memory, more stutter possible)
       - FEX_DYNAMICL1CACHE=false            # Enables dynamically sized JIT L1 cache to save memory
       - FEX_DYNAMICL1CACHEINCREASECOUNTHEURISTIC=250 # Threshold (lookups/sec) to increase L1 cache size
@@ -48,7 +48,7 @@ services:
       - FEX_INJECTLIBSEGFAULT=false         # Preload libSegFault.so for crash debugging
       - FEX_DISASSEMBLE=off                 # VIXL disassembler mode [off, dispatcher, blocks, stats]
       - FEX_FORCESVEWIDTH=0                 # Override SVE width (debugging only)
-      - FEX_DISABLETELEMETRY=false          # Disable telemetry collection
+      - FEX_DISABLETELEMETRY=true           # Disable telemetry collection
 
       # ----------------
       # Logging Options
@@ -66,16 +66,16 @@ services:
       - FEX_TSOENABLED=true                 # Enable TSO IR operations (required for multithreading)
       - FEX_VECTORTSOENABLED=false          # Vector load/store atomicity under TSO
       - FEX_MEMCPYSETTSOENABLED=false       # Atomic memcpy/memset under TSO
-      - FEX_HALFBARRIERTSOENABLED=true      # Half-barrier atomics for unaligned load/store under TSO
+      - FEX_HALFBARRIERTSOENABLED=false     # Half-barrier atomics for unaligned load/store under TSO
       - FEX_STRICTINPROCESSSPLITLOCKS=false # Strict lock for split-atomic handling across cacheline
       - FEX_KERNELUNALIGNEDATOMICBACKPATCHING=true # Backpatch unaligned atomic ops to reduce context switches
       - FEX_VOLATILEMETADATA=true           # Use PE volatile metadata for TSO handling when available
-      - FEX_X87REDUCEDPRECISION=false       # Use 64-bit x87 precision (faster, less accurate)
+      - FEX_X87REDUCEDPRECISION=true        # Use 64-bit x87 precision (faster, less accurate)
       - FEX_STALLPROCESS=false              # Force process stall at startup (debugging)
       - FEX_HIDEHYPERVISORBIT=false         # Hide the hypervisor CPUID bit
       - FEX_STARTUPSLEEP=0                  # Sleep duration in seconds before process startup
       - FEX_STARTUPSLEEPPROCNAME=           # Only apply startup sleep to this process name
-      - FEX_MONOHACKS=true                  # Use Mono-specific SMC behavior and smaller JIT blocks
+      - FEX_MONOHACKS=false                 # Use Mono-specific SMC behavior and smaller JIT blocks
 
       # ----------------
       # Misc Options

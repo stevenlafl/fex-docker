@@ -1,0 +1,10 @@
+services:
+  fex:
+    image: stevenlafl/fex:steamcmd
+    build:
+      context: /home/ubuntu/Containers/fex
+      dockerfile: ./games/steamcmd/Dockerfile
+    platform: linux/arm64
+    stdin_open: true
+    tty: true
+    privileged: true

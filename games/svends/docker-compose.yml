@@ -1,0 +1,15 @@
+services:
+  fex:
+    image: stevenlafl/fex:svends
+    build:
+      context: /home/ubuntu/Containers/fex
+      dockerfile: ./games/svends/Dockerfile
+    platform: linux/arm64
+    ports:
+      - 27015:27015/tcp
+      - 27015:27015/udp
+#    command: sh -c "cd '/home/fex/Steam/steamapps/common/Sven Co-op Dedicated Server' && FEX ./svends_run +map svencoop1"
+    stdin_open: true
+    tty: true
+    privileged: true
+#    restart: unless-stopped
