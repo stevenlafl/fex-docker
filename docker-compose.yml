@@ -26,7 +26,7 @@ services:
       - FEX_THUNKCONFIG=                    # Path or named Thunk configuration JSON file
       - FEX_ENV=                            # Adds environment variables to the emulated environment
       - FEX_HOSTENV=                        # Adds environment variables to the host environment
-      - FEX_ADDITIONALARGUMENTS=            # Additional CLI arguments to the application
+      #- FEX_ADDITIONALARGUMENTS=            # Additional CLI arguments to the application
       - FEX_DISABLEL2CACHE=false            # Disable FEXCore's JIT L2 cache lookup (less memory, more stutter possible)
       - FEX_DYNAMICL1CACHE=false            # Enables dynamically sized JIT L1 cache to save memory
       - FEX_DYNAMICL1CACHEINCREASECOUNTHEURISTIC=250 # Threshold (lookups/sec) to increase L1 cache size
@@ -91,13 +91,13 @@ services:
       - FEX_APP_CONFIG=                     # Override only the application config file location
       - FEX_APP_DATA_LOCATION=              # Override data file storage directory (includes caches)
       - FEX_PORTABLE=                       # Make FEX run in portable mode; ignore system-wide locations
-    volumes:
-      - ./workspace:/home/fex/workspace
-      - ./Steam:/home/fex/Steam
+#    volumes:
+#      - ./Steam:/home/fex/Steam
     ports:
       - 27015:27015/tcp
       - 27015:27015/udp
-    command: sh -c "cd '/home/fex/Steam/steamapps/common/Sven Co-op Dedicated Server' && FEX ./svends_run +map svencoop1"
+    command: bash
+#    command: sh -c "cd '/home/fex/Steam/steamapps/common/Sven Co-op Dedicated Server' && FEX ./svends_run +map svencoop1"
     stdin_open: true
     tty: true
     privileged: true

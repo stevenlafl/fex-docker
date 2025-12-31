@@ -1,11 +1,10 @@
-# Multi-stage build to minimize final image size
 FROM ubuntu:24.04 AS builder
 
-COPY ./games/svends/sven5-26.tar.gz /tmp/
+COPY svends.tar.gz /tmp/
 
 RUN mkdir -p /tmp/workspace \
     && cd /tmp/workspace \
-    && tar xvf /tmp/sven5-26.tar.gz && rm -rf /tmp/sven5-26.tar.gz
+    && tar xvf /tmp/svends.tar.gz
 
 FROM stevenlafl/fex:steamcmd
 

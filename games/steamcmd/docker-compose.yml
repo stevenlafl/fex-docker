@@ -2,9 +2,11 @@ services:
   fex:
     image: stevenlafl/fex:steamcmd
     build:
-      context: /home/ubuntu/Containers/fex
-      dockerfile: ./games/steamcmd/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     platform: linux/arm64
+    volumes:
+      - ../../Steam:/home/fex/Steam
     stdin_open: true
     tty: true
     privileged: true

@@ -2,8 +2,8 @@ services:
   fex:
     image: stevenlafl/fex:svends
     build:
-      context: /home/ubuntu/Containers/fex
-      dockerfile: ./games/svends/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     platform: linux/arm64
     ports:
       - 27015:27015/tcp
